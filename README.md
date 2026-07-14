@@ -1,5 +1,7 @@
 # claude-config-lifeboat
 
+![License: MIT](https://img.shields.io/badge/license-MIT-green) ![For: Claude Code](https://img.shields.io/badge/for-Claude%20Code-blue) ![Backup: secret--safe](https://img.shields.io/badge/backup-secret--safe-brightgreen) ![Startup: fail--safe](https://img.shields.io/badge/hook-fail--safe-orange)
+
 **A secret-safe disaster-recovery kit for your Claude Code `~/.claude` directory.**
 
 Your `~/.claude` quietly accumulates the things that make your assistant *yours* — rules, skills, agents, commands, hooks, settings, and per-project memory. It lives on **one disk**. If that machine dies (hardware failure, OS reinstall, theft), that accumulated context is gone.
