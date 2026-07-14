@@ -1,0 +1,44 @@
+# Drop this in as ~/.claude/.gitignore
+#
+# Whitelist mode: exclude EVERYTHING, then explicitly re-include only config assets.
+# This keeps secrets (.credentials.json), history, sessions, caches, and plugins
+# out of git by default — a mistake fails CLOSED (nothing sensitive is tracked
+# unless you add it to the include list below).
+/*
+
+# === Explicitly included (unignore) ===
+!.gitignore
+!CLAUDE.md
+!RESTORE.md
+!settings.json
+!settings.local.json
+
+# Config directories (unignore the dir, then let its contents through)
+!/rules/
+!/skills/
+!/agents/
+!/commands/
+!/hooks/
+!/scripts/
+!/plans/
+!/profile/
+
+# Exclude compiled Python caches inside any included directory
+**/__pycache__/
+
+# Never track machine-specific / leak-carrier backups even inside an included dir
+*.bak
+
+# projects/: back up ONLY the memory/ subdirs (per-project memory), never transcripts.
+# Session transcripts are large and can contain sensitive context — excluded on purpose.
+!/projects/
+/projects/*
+!/projects/*/
+/projects/*/*
+!/projects/*/memory/
+
+# --- NOTE ---
+# Anything NOT re-included above (e.g. .credentials.json, history.jsonl, sessions/,
+# cache/, plugins/) stays ignored. Verify before your first push:
+#   git -C ~/.claude add -A && git -C ~/.claude diff --cached --name-only
+# If you see credentials/history/sessions in that list, STOP and fix the whitelist.
