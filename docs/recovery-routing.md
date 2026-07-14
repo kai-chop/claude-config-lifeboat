@@ -53,6 +53,24 @@ git clone <PRIVATE_BACKUP_REPO_URL> ~/_claude-restore
 There is **no local salvage** in Route B (there is no old disk) — that's expected. Everything
 you had at the last push comes back; anything after it is gone.
 
+### Keep the bootstrap OFF the machine (the part people forget)
+
+Route B has a trap: on a **truly blank machine, the recovery instructions are not on the
+machine either.** Your `RESTORE.md`, your backup skill, your handoff notes — they all live
+*inside the very repos you haven't cloned yet*. Circular.
+
+So the one thing that must survive **outside git and outside the machine** is a tiny
+bootstrap card. Keep a one-screen note in your **password manager / a self-addressed email /
+printed**, containing only:
+
+- your private repo URL(s) (`~/.claude` backup, project repos) — URLs are not secrets,
+- the 5 steps: install `git`/`gh` → `gh auth login` → clone backup into `~/.claude` (non-destructively)
+  → restart your assistant → clone your project(s),
+- one line of "what's restored / what isn't / recovery ceiling = last push".
+
+Paste that card into a fresh assistant on the blank machine and it can drive the rest. Do **not**
+store the card only inside the backup repo — that's the circular trap. Off-machine or it doesn't count.
+
 ---
 
 ## The catch that makes this worth writing down
